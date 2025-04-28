@@ -17,7 +17,7 @@ public SimpleGUIProgram() {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setSize(500,300);
     setLocationRelativeTo(null);
-    setLayout(new GridLayout(5,2,5,5));
+    setLayout(new GridLayout(6,2,5,5));
 
     JLabel jlInvestmentAmount = new JLabel(" Investment Amount");
     JLabel jlNumberOfYears = new JLabel(" Number of Years");
@@ -63,7 +63,7 @@ private void computeValue() {
         double investmentAmount = Double.parseDouble(jtfInvestmentAmount.getText());
         double futureValue = investmentAmount * Math.pow(1.0 + monthlyInterestRate, NumberOfYears * 12);
         jtfFutureValue.setText(String.format("%.2f", futureValue));
-    } catch (Exception e) {
+    } catch (NumberFormatException e) {
         JOptionPane.showMessageDialog(null, " Please enter numeric values.");
     }
 }
